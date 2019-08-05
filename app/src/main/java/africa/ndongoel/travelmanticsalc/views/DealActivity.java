@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 
@@ -36,6 +37,7 @@ public class DealActivity extends AppCompatActivity {
 
     private static final String TAG = "DealActivity";
     private EditText mTitle, mDescription, mPrice;
+    private ImageView mImageView;
     private TravelDeal mTravelDeal;
     private DatabaseReference mDbRef;
     private static final int m_REQUEST_CODE = 42;
@@ -59,6 +61,7 @@ public class DealActivity extends AppCompatActivity {
         mTitle = findViewById(R.id.activity_insert_title_input);
         mDescription = findViewById(R.id.activity_insert_description_input);
         mPrice = findViewById(R.id.activity_insert_price_input);
+        mImageView = findViewById(R.id.activityDeal_imgview);
         //checking if a TravelDeal is passed
         Intent intent = getIntent();
         mTravelDeal = intent.getParcelableExtra(DealActivity.DEAL_INDEX_POSITION);
@@ -154,6 +157,10 @@ public class DealActivity extends AppCompatActivity {
     }
 
 
+    public void displayImg(String url) {
+        
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -164,7 +171,7 @@ public class DealActivity extends AppCompatActivity {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     //getting the file's ulr
-                    String pictureUrl = taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();
+                    String pictureUrl = taskSnapshot.getMetadata().getPath();
                     Log.d(TAG, "***************onSuccess: picture's url="+pictureUrl);
                     mTravelDeal.setImgUrl(pictureUrl);
                 }

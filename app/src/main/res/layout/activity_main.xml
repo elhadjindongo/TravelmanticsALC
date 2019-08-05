@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="bottom"
+    tools:context=".views.MainActivity">
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/activityMain_google_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"/>
+
+    <Button
+        android:id="@+id/activityMain_signinEmail_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@color/colorAccent"
+        android:drawableLeft="@android:drawable/ic_dialog_email"
+        android:onClick="launchEmailSignin"
+        android:text="@string/sign_in_with_email"
+        android:textColor="@android:color/background_light" />
+</LinearLayout>

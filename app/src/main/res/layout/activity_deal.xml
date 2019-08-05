@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.DealActivity">
+
+    <EditText
+        android:id="@+id/activity_insert_title_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:hint="@string/deal_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/activity_insert_price_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:hint="@string/price_numbers_only"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="@+id/activity_insert_title_input"
+        app:layout_constraintStart_toStartOf="@+id/activity_insert_title_input"
+        app:layout_constraintTop_toBottomOf="@+id/activity_insert_title_input" />
+
+    <EditText
+        android:id="@+id/activity_insert_description_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:hint="@string/description"
+        app:layout_constraintEnd_toEndOf="@+id/activity_insert_price_input"
+        app:layout_constraintStart_toStartOf="@+id/activity_insert_price_input"
+        app:layout_constraintTop_toBottomOf="@+id/activity_insert_price_input" />
+
+    <Button
+        android:id="@+id/activityDeal_upload_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="loadImg"
+        android:text="@string/upload_image"
+        app:layout_constraintEnd_toEndOf="@+id/activity_insert_description_input"
+        app:layout_constraintStart_toStartOf="@+id/activity_insert_description_input"
+        app:layout_constraintTop_toBottomOf="@+id/activity_insert_description_input" />
+
+    <ImageView
+        android:id="@+id/activityDeal_imgview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/activity_insert_description_input"
+        app:layout_constraintStart_toStartOf="@+id/activity_insert_description_input"
+        app:layout_constraintTop_toBottomOf="@+id/activityDeal_upload_btn"
+        app:srcCompat="@android:color/transparent" />
+</android.support.constraint.ConstraintLayout>

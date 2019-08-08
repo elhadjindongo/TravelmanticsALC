@@ -43,7 +43,6 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
-                android:text="TextView"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/deal_item_imgView"
@@ -58,7 +57,6 @@
                 android:layout_marginTop="11dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
-                android:text="TextView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/deal_item_imgView"
                 app:layout_constraintTop_toBottomOf="@+id/deal_item_title" />
@@ -69,7 +67,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
-                android:text="TextView"
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"

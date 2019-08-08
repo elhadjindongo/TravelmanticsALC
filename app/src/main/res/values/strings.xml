@@ -3,14 +3,14 @@
     <string name="save">Save</string>
     <string name="del">Delete</string>
     <string name="price_numbers_only">Price (Numbers only)</string>
-    <string name="description">description</string>
+    <string name="description" translatable="false">description</string>
     <string name="deal_title">Deal Title</string>
     <string name="new_travel_deal">New Travel Deal</string>
     <string name="saved_success">New deal successfully saved !</string>
     <string name="del_success">Deal successfully removed!</string>
     <string name="please_saved">Please save before attempting to delete !</string>
     <string name="title_activity_login">Sign in</string>
-    <string name="prompt_email">Email</string>
+    <string name="prompt_email" translatable="false">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in</string>
     <string name="sign_up">Sign up</string>
@@ -20,16 +20,18 @@
     <string name="login_failed">"Login failed"</string>
     <string name="sign_in">Sign in</string>
     <string name="password">Password</string>
-    <string name="email">Email</string>
+    <string name="email" translatable="false">Email</string>
     <string name="sign_in_with_email">Sign in with email</string>
     <string name="first_and_last_name">First and Last name</string>
     <string name="signup_fail">Could not sign up. Try again...</string>
     <string name="empty_input">Email, password or name should\'nt be empty. Try again...</string>
-    <string name="register_quest">Don\'t have an account? click</string>
+    <string name="register_quest">Don\'t have an account ? click</string>
     <string name="register_quest_click">here</string>
     <string name="register_quest3">to sign up</string>
-    <string name="register_success"><![CDATA[Registered successfully.Enter your email & password.]]></string>
+    <string name="register_success" translatable="false"><![CDATA[Registered successfully.Enter your email & password.]]></string>
     <string name="upload_image">Upload image</string>
     <string name="logout">Logout</string>
+    <string name="listOfDeals">List of Travel deal</string>
+    <string name="newDeal">New Deal</string>
 
 </resources>

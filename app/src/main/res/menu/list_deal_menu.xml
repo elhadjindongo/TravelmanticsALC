@@ -3,7 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/list_deal_new_deal_Item"
+        android:id="@+id/menu_listDeal_new_deal"
         android:title="@string/new_travel_deal"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_listdeal_Logout_item"
+        android:title="@string/logout" />
 </menu>

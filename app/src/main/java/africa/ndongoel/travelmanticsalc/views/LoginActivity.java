@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseUser;
+
 import africa.ndongoel.travelmanticsalc.R;
 import africa.ndongoel.travelmanticsalc.controllers.FirebaseHelper;
 
@@ -27,7 +29,6 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         init();
     }
-
     private void init() {
         mEmail = findViewById(R.id.activityLogin_username);
         mPassword = findViewById(R.id.activityLogin_password);
@@ -47,7 +48,6 @@ public class LoginActivity extends AppCompatActivity {
                 Log.d(TAG, "********************onClick: Email="+email+" pass="+password);
 
                 //getting the firebase authentification
-                FirebaseHelper.openRef(DealActivity.PATH);
                 FirebaseHelper.signin(LoginActivity.this, email, password);
 
             }

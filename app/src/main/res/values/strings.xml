@@ -30,5 +30,6 @@
     <string name="register_quest3">to sign up</string>
     <string name="register_success"><![CDATA[Registered successfully.Enter your email & password.]]></string>
     <string name="upload_image">Upload image</string>
+    <string name="logout">Logout</string>
 
 </resources>

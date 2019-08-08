@@ -5,7 +5,6 @@
 package africa.ndongoel.travelmanticsalc.controllers;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.util.Log;
@@ -15,7 +14,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -31,13 +29,14 @@ import africa.ndongoel.travelmanticsalc.views.LoginActivity;
 
 public final class FirebaseHelper {
     private static final String TAG = "FirebaseHelper";
-    private static FirebaseDatabase mFirebaseDatabase;
-    public static DatabaseReference mDbRef;
-    private static FirebaseHelper mFirebaseHelperInstance;
-    private static FirebaseAuth mFirebaseAuth;
-    private static FirebaseStorage mFbSotarage;
+    private static FirebaseDatabase sFirebaseDatabase;
+    public static DatabaseReference sDatabaseReference;
+    private static FirebaseHelper sFirebaseHelperInstance;
+    public static FirebaseAuth sFirebaseAuth;
+    public static FirebaseStorage sFbSotarage;
     public static StorageReference sStorageReference;
-    static ArrayList<TravelDeal> mDealsList;
+    static ArrayList<TravelDeal> sDealsList;
+    public static FirebaseAuth.AuthStateListener sStateListener;
     //public static Boolean sLoginSuccess, sRegisterSuccess;
 
     private FirebaseHelper() {}
@@ -47,14 +46,22 @@ public final class FirebaseHelper {
      * @param path of the firebase database
      */
     public static void openRef(String path) {
-        if (mFirebaseHelperInstance == null) {
-            mFirebaseHelperInstance = new FirebaseHelper();
-            mFirebaseDatabase = FirebaseDatabase.getInstance();
-            mFirebaseAuth = FirebaseAuth.getInstance();
-            mDealsList = new ArrayList<>();
-            mDbRef = mFirebaseDatabase.getReference().child(path);
+        if (sFirebaseHelperInstance == null) {
+            sFirebaseHelperInstance = new FirebaseHelper();
+            sFirebaseDatabase = FirebaseDatabase.getInstance();
+            sFirebaseAuth = FirebaseAuth.getInstance();
+            sDatabaseReference = sFirebaseDatabase.getReference().child(path);
+            sStateListener = new FirebaseAuth.AuthStateListener() {
+                @Override
+                public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+
+                }
+            };
         }
+        sDealsList = new ArrayList<>();
         connectStorage();
+
+
     }
 
     /**
@@ -64,15 +71,14 @@ public final class FirebaseHelper {
      * @param password of the user
      */
     public static void signin(final Activity activity , String email, String password) {
-        mFirebaseAuth.signInWithEmailAndPassword(email, password)
+        sFirebaseAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(activity, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success
                             Log.d(TAG, "************************signInWithEmail:success");
-                            Intent intent = new Intent(activity, ListDealsActivity.class);
-                            activity.startActivity(intent);
+                            ListDealsActivity.launchListDeal(activity);
 
                         } else {
                             // If sign in fails, display a message to the user.
@@ -90,7 +96,7 @@ public final class FirebaseHelper {
      * @param password of the user
      */
     public static void register( final Activity activity , String email, String password) {
-        mFirebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(activity, new OnCompleteListener<AuthResult>() {
+        sFirebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(activity, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
@@ -109,11 +115,16 @@ public final class FirebaseHelper {
         });
     }
 
-
+    public  static void connectListener() {
+        sFirebaseAuth.addAuthStateListener(sStateListener);
+    }
+    public  static void disconnectListener() {
+        sFirebaseAuth.removeAuthStateListener(sStateListener);
+    }
     public static void connectStorage() {
 
-        mFbSotarage = FirebaseStorage.getInstance();
-        sStorageReference = mFbSotarage.getReference().child("deals_pictures");
+        sFbSotarage = FirebaseStorage.getInstance();
+        sStorageReference = sFbSotarage.getReference().child("deals_pictures");
 
     }
 }
